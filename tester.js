@@ -36,11 +36,11 @@ function fetchAndDisplayData(){
         method: "GET"
     }).done(function (data) {
         var num = Math.floor((Math.random() * 15) + 1);
-        var quote = "Quote : '" + data[num].quote + "'";
-        var author = "Author: '" + data[num].author + "'";
-        $('#placeholder').html(quote);
+        var quote = 'Quote : "' + data[num].quote + '"';
+        var author = '   -' + data[num].author;
+        $('#placeholder').html(quote + "<br>" + "<br>");
         $('#placeholder2').html(author);
-        tempString = "Quote: " + quote + "\n" + "Author: " + author;
+        tempString = "Quote: " + quote + "\n" + "" + author;
     })
 }
 

@@ -1,0 +1,51 @@
+#back {
+    background-color: gray;
+
+}
+
+#btn{
+    color: white;
+    background: black;
+    font-style: italic;
+}
+
+#btn1{
+    color: white;
+    background: black;
+    font-style: italic;
+}
+
+#move{
+    margin-left: 600px;
+    margin-top: 400px;
+}
+
+#back2{
+    top: 25%;
+    left: 22%;
+    position: relative;
+    color: #000000;
+    background: #ababab;
+    border-radius: 10px;
+    width: 50%;
+    font-size: 25px;
+    font-style: italic;
+}
+#placeholder{
+    text-align: center;
+}
+#placeholder2{
+    text-align: center;
+}
+
+#title{
+    font-size: 25px;
+    color: white;
+}
+
+#title1{
+    background: black;
+    height: 500px;
+    top:25%;
+    border-radius: 25px;
+}

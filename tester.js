@@ -13,8 +13,8 @@ var colors = [
     "brown",
     "chocolate"
 ];
-
-var tempString = "";
+//placeholder that will hold a string to be tweeted
+var stringToTweet = "";
 
 
 //waits for user to click button
@@ -23,32 +23,33 @@ $(document).ready(function () {
        //once user clicks button, it will call the method and changes background color
        colorChange();
        fetchAndDisplayData();
-   })
-
+   });
+    //will run if user wants to tweet the quote
     $('#btn1').click(function () {
         twitterButton();
     })
 });
 
 function fetchAndDisplayData(){
-    $.ajax({
-        url: "https://random-quote-generator.herokuapp.com/api/quotes/",
-        method: "GET"
-    }).done(function (data) {
-        var num = Math.floor((Math.random() * 15) + 1);
-        var quote = 'Quote : "' + data[num].quote + '"';
-        var author = '   -' + data[num].author;
-        $('#placeholder').html(quote + "<br>" + "<br>");
+    var url = "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?";
+    $.getJSON(url, function (result) {
+        //gets quote and author string from json after being formatted by getJSON
+        var quote = '"' + result.quoteText + '"';
+        var author = '   -' + result.quoteAuthor;
+        //puts quote and author into the placeholders
+        $('#placeholder').html(quote);
         $('#placeholder2').html(author);
-        tempString = "Quote: " + quote + "\n" + "" + author;
-    })
+        //combines quote and string into the stringToTweet variable
+        stringToTweet = quote + "\n" + author;
+    });
 }
 
 function twitterButton() {
-        if(tempString.length > 0){
-            var tweet = 'https://twitter.com/home?status=' +encodeURIComponent(tempString);
+    if (stringToTweet.length > 0) {
+        var tweet = 'https://twitter.com/home?status=' + encodeURIComponent(stringToTweet);
             window.open(tweet,'_blank');
         }
+    //if user tries to tweet an empty tweet, will notify user
         else{
             $('#placeholder').html("Can't tweet a blank quotes");
         }
